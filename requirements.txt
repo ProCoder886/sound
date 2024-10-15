@@ -1,2 +1,3 @@
-streamlit==1.25.0  # Or the latest Streamlit version
+streamlit==1.25.0
 elevenlabs==1.0.0
+pillow==9.5.0  # Known to work with many cloud services
