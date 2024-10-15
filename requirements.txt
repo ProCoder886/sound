@@ -1,0 +1,2 @@
+streamlit==1.25.0  # Or the latest Streamlit version
+elevenlabs==1.0.0
