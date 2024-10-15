@@ -1,3 +1,6 @@
+pip==24.2  # Force an upgrade to the latest pip version
+setuptools==65.5.0  # Upgrade setuptools to ensure proper wheel handling
+wheel==0.38.4  # Ensure wheel is installed to help with building packages
 streamlit==1.25.0
 elevenlabs==1.0.0
-pillow==8.4.0
+pillow==9.5.0  # Or a stable version that works, e.g., 8.4.0
