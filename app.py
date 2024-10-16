@@ -1,9 +1,15 @@
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request, send_file, abort
 import os
 from elevenlabs.client import ElevenLabs
 
+# Get API key from environment variable
+api_key = os.getenv("ELEVENLABS_API_KEY")
+
+if not api_key:
+    raise Exception("ELEVENLABS_API_KEY environment variable not set!")
+
 # Initialize ElevenLabs API
-elevenlabs = ElevenLabs(api_key="your_api_key_here")
+elevenlabs = ElevenLabs(api_key=api_key)
 
 app = Flask(__name__)
 
@@ -29,6 +35,10 @@ def index():
 def generate():
     prompt = request.form.get('prompt')
     output_file = "output.mp3"
+    
+    if not prompt:
+        return abort(400, "Prompt is required")
+    
     generate_sound_effect(prompt, output_file)
     
     return send_file(output_file, as_attachment=True)
